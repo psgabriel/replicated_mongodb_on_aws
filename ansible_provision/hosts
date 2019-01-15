@@ -1,0 +1,19 @@
+# Primary server
+[db-mongodb-master]
+<adresse ip> ansible_user=root
+
+# Secondary servers
+[db-mongodb-slave-1]
+<adresse ip> ansible_user=root
+
+[db-mongodb-slave-2]
+<adresse ip> ansible_user=root
+
+# MongoDB Groups
+[db-mongodb-slave:children]
+db-mongodb-slave-1
+db-mongodb-slave-2
+
+[db-mongodb:children]
+db-mongodb-master
+db-mongodb-slave
